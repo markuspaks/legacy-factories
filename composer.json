@@ -1,5 +1,5 @@
 {
-    "name": "laravel/legacy-factories",
+    "name": "markuspaks/legacy-factories",
     "description": "The legacy version of the Laravel Eloquent factories.",
     "license": "MIT",
     "homepage": "http://laravel.com",
