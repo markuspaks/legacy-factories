@@ -10,14 +10,18 @@ if (! function_exists('factory')) {
      * @param  int  $amount
      * @return \Illuminate\Database\Eloquent\FactoryBuilder
      */
-    function factory($class, $amount = null)
+    function factory()
     {
         $factory = app(Factory::class);
 
-        if (isset($amount) && is_int($amount)) {
-            return $factory->of($class)->times($amount);
+        $arguments = func_get_args();
+
+        if (isset($arguments[1]) && is_string($arguments[1])) {
+            return $factory->of($arguments[0], $arguments[1])->times($arguments[2] ?? null);
+        } elseif (isset($arguments[1])) {
+            return $factory->of($arguments[0])->times($arguments[1]);
         }
 
-        return $factory->of($class);
+        return $factory->of($arguments[0]);
     }
 }
